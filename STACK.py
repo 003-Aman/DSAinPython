@@ -18,7 +18,7 @@ def pop(stack): #esma item ko value chaiyena kinabhane last kai ta niskini ho j 
     return stack.pop()    
 
 
-print(push([1,2,3,4,5],6))
+print(push([1,2,3,4,5],6)) #direct dherai value input garna sakiyo
 
 
 #Using stack as a class 
@@ -35,10 +35,10 @@ class Stack:
         return self.stack
 
     def pop(self):
-        if (check_empty()):
+        if (check_empty(stack)):
             return "Stack is empty"
         self.stack.pop()
         return self.stack   
               
 s1= Stack()
-print(s1.push(1))              
+print(s1.pop())     #esma shuru batai enque garna parxa natra khali         
