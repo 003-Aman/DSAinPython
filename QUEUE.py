@@ -32,7 +32,7 @@ class Queue:
         return self.queue
     
     def dequeue(self):
-        if check_empty():
+        if check_empty(self):
             return "Queue is empty"
         self.queue.pop(0)
 
