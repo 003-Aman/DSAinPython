@@ -1,7 +1,7 @@
 class MyCircularQueue:
     def __init__(self,k):
         self.k =k
-        self.queue = [None]*k
+        self.queue = [None]*k #object banauni bittikai yo value huxa when only parameter k is passed k= no. of items
         self.head = self.tail = -1 # these are the indexices of the rear and front
 
     def enqueue(self,data):
@@ -36,20 +36,20 @@ class MyCircularQueue:
             if(self.head ==-1):
                 print("No element in the circular queue")
         
-            elif(self.tail >= self.head ):#euta element matrai vayo vane pani yo condition meet garxa
+            elif(self.tail >= self.head ):#euta element matrai vayo vane pani yo condition meet garxa, this is when last ma aako item last mai xa i.e at the right of the array
                 for i in range(self.head, self.tail +1):
                     print(self.queue[i], end = " ")   
                 print()
 
             else:
-                for i in range(self.head,self.k):
+                for i in range(self.head,self.k):# this is when last ma aako array thau nabhara agadi pugyo 
                     print(self.queue[i],end= " ")
                 for i in range(0,self.tail +1):
                     print(self.queue[i],end =" ") 
                 print()  
 
 
-obj = MyCircularQueue(5)
+obj = MyCircularQueue(8)
 obj.enqueue(1)
 obj.enqueue(3)
 obj.enqueue(7)
@@ -60,3 +60,5 @@ obj.printCircularQueue()
 obj.dequeue()
 print("After removing an element from the queue")
 obj.printCircularQueue()                   
+
+
