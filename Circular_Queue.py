@@ -1,3 +1,10 @@
+'''
+Applications of Circular Queue
+CPU scheduling
+Memory management
+Traffic Management
+'''
+
 class MyCircularQueue:
     def __init__(self,k):
         self.k =k

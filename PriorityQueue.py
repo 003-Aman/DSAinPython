@@ -1,3 +1,13 @@
+'''
+Priority Queue Applications
+
+
+
+Dijkstra's algorithm
+for implementing stack
+for load balancing and interrupt handling in an operating system
+for data compression in Huffman code
+'''
 #Priority queue using heap data structure
 #heap is a complete binary tree(can only have two children elements) that satisfies the heap property
 #max heap(parent element has maximum value) and min heap(parent element has minimun value)
