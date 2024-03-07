@@ -41,11 +41,125 @@ class LinkedList:
 
     def insertAtEnd(self,data):
         new_node = Node(data)# j garda pani node ta banauna paryo kinabhane here the value is a node jastai ho which has next too
-        if self.head == None:
-            self.head = new_node
+        if self.head == None: #this checks if the linkedlist has no items
+            self.head = new_node # if it is, point the head to the new node which we have created
             return 
 
-        current_node = self.head 
-        while current_node.next:
-            current_node =current_node.next
-        current_node.next = new_node    
+        current_node = self.head #yo else ho, make a variable current_node and make it the self.head
+        while current_node.next: #self.head.next
+            current_node =current_node.next # agadi ko ma point gara
+        current_node.next = new_node   #agadi aba new node jodde 
+
+    def updateNode(self,val,index): #update the value of a node at a given index
+        current_node =self.head
+        position =0
+        if position ==index: #which means that if index is 0
+            current_node.data = val
+        else:
+            while(current_node != None and position != index):
+                position = position +1
+                current_node = current_node.next
+
+            if current_node != None:
+                current_node.data = val
+            else:
+                print("Index is not present") 
+
+    def remove_first_node(self):
+        if self.head == None:#which means no node
+            return 
+        self.head = self.head.next # passing the head pointer to the one infront
+
+    def remove_last_node(self):
+        if self.head is None:
+            return 
+        current_node = self.head #else
+
+        while current_node.next.next:
+            current_node=current_node.next 
+
+        current_node.next =None
+
+    def remove_at_index(self,index):
+        if self.head == None:
+            return
+
+        current_node =self.head
+        position =0
+        if position ==index:
+            self.remove_first_node()
+
+        else:
+            while current_node != None and position +1 != index:
+                position = position +1
+                current_node= current_node.next
+
+            if current_node != None:
+                current_node.next = current_node.next.next
+
+            else:
+                print("Index not present")   
+
+    def remove_node(self,data):
+        current_node = self.head
+
+        if current_node.data ==data:
+            self.remove_first_node() 
+            return
+
+        while current_node != None and current_node.next.data != data:
+            current_node = current_node.next
+
+        if current_node == None: 
+            return
+        else:
+            current_node.next = current_node.next.next
+
+    def sizeOfLL(self):
+        size =0
+        if self.head:
+            current_node = self.head
+            while(current_node):
+                size = size +1
+                current_node = current_node.next
+
+            return size
+
+        else:
+            return 0
+
+    def printLL(self):
+        current_node =self.head
+        while current_node:
+            print(current_node.data)
+            current_node=current_node.next
+
+
+llist = LinkedList()
+llist.insertAtEnd("Aman")
+llist.insertAtEnd("Piyush")
+llist.insertAtBegin("Bidya")
+llist.insertAtBegin("Kumar")
+llist.insertAtIndex("Sushil",2)
+
+print("Node data")
+llist.printLL()
+
+print("\nRemove First Node")
+llist.remove_first_node()
+print("Remove Last Node")
+llist.remove_last_node()
+print("Remove Node at Index 1")
+llist.remove_at_index(1)
+ 
+ 
+# print the linked list again
+print("\nLinked list after removing a node:")
+llist.printLL()
+ 
+print("\nUpdate node Value")
+llist.updateNode('Pramod', 0)
+llist.printLL()
+ 
+print("\nSize of linked list :", end=" ")
+print(llist.sizeOfLL())
