@@ -21,22 +21,6 @@ class LinkedList:
             new_node.next = self.head
             self.head = new_node #updating the head value paxadi link todera agadi ayera joddiyo
 
-    def insertAtIndex(self,data,index):
-        new_node = Node(data)# makes a new node when you call the function
-        current_node = self.head #current_node refers to the head of the linked list
-        position =0 #these variables are used to traverse the linked list and keep track of the current position
-        if position == index: #if the provided index is 0 it means that we want to insert at the beginning of the linked list
-            self.insertAtBegin(data)
-        else:
-            while current_node!=None and position+1 !=index: #traverses the linked list until either current_node becomes None(indicating the end of the list) or position +1 equals to the specified index
-                position = position +1 #with each iteration, it increments the position and moves current_node to the next node
-                current_node = current_node.next
-
-            if current_node != None: #checks if the specified index is valid and there's a node at that position
-                new_node.next = current_node.next #If so, it inserts a new node between current_node and its next node
-                current_node.next = new_node #by updating the 'next' pointers accordingly
-            else:
-                print("Index not present") #if current node is None after traversing the linked list, it means the specified index is beyond the end of the list 
 
 
     def insertAtEnd(self,data):
@@ -50,18 +34,40 @@ class LinkedList:
             current_node =current_node.next # agadi ko ma point gara
         current_node.next = new_node   #agadi aba new node jodde 
 
+
+    def insertAtIndex(self,data,index):
+        new_node = Node(data)# makes a new node when you call the function
+        current_node = self.head #current_node refers to the head of the linked list
+        position =0 #these variables are used to traverse the linked list and keep track of the current position
+        if position == index: #if the provided index is 0 it means that we want to insert at the beginning of the linked list
+            self.insertAtBegin(data)
+        else:
+            while current_node!=None and position+1 !=index: #traverses the linked list until either current_node becomes None(indicating the end of the list) or position +1 equals to the specified index,
+                # which means we are inserting the node at the specified value tyo bhand agadi nai we are ending the traversal becuase position +1 != index vanexa
+                position = position +1 #with each iteration, it increments the position and moves current_node to the next node
+                current_node = current_node.next
+
+            if current_node != None: #checks if the specified index is valid and there's a node at that position
+                new_node.next = current_node.next #If so, it inserts a new node between current_node and its next node
+                current_node.next = new_node #by updating the 'next' pointers accordingly
+            else:
+                print("Index not present") #if current node is None after traversing the linked list, it means the specified index is beyond the end of the list 
+
+
+    
+
     def updateNode(self,val,index): #update the value of a node at a given index
         current_node =self.head
         position =0
         if position ==index: #which means that if index is 0
             current_node.data = val
         else:
-            while(current_node != None and position != index):
+            while(current_node != None and position != index): #this is basically a traversal ra tyakkai tei index ma halni ho so no position +1
                 position = position +1
                 current_node = current_node.next
 
-            if current_node != None:
-                current_node.data = val
+            if current_node != None: # the list is not empty
+                current_node.data = val #traversed till this index and updated the value
             else:
                 print("Index is not present") 
 
