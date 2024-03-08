@@ -11,13 +11,6 @@ reference is basically the address of the next node
 #utlization of memory will be more compared to list
 
 
-#pseudocode for creating a node in Singly Linked list
-'''
-class Node:
-def__init__(self,data):
-    self.data = data
-    self.reference = None
-'''
 
 #Creating a node
 class Node:
