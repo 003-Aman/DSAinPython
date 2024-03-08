@@ -98,12 +98,12 @@ class SinglyLL:
         print()
         prev=self.head
         a=self.head.next
-        for i in range(1,position):
+        for i in range(1,position): #this time a doesnt stop before it reaches the position but reaches there
             a=a.next
             prev =prev.next
         
-        prev.next = a.next 
-        a.next = None   
+        prev.next = a.next #when a reaches there we make the prev.next equal to the a.next directly, we skip and node and connect to the alternate one directly
+        a.next = None  # and disconnect the a.next from the next since prev.next maintained the connection 
 
 
 sll=SinglyLL()  #sll.head =None
