@@ -23,12 +23,12 @@ def printList(head):
         print("List is empty")
         return 
     
-    temp = head.next
-    print(head.data, end=' ') 
+    temp = head.next # temp lai agadi pathidiyo
+    print(head.data, end=' ') # paila yo print garayo
     if head != None: 
-        while temp != head: 
-            print(temp.data, end=" ") 
-            temp = temp.next
+        while temp != head: #esto garo chai kina gareko
+            print(temp.data, end=" ") # tespaxi aba temp print handai ja sardai
+            temp = temp.next #saryo
     print() 
   
 def deleteNode(head, key): 
