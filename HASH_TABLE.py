@@ -71,3 +71,90 @@ print(hashTable)
 removeData(123)
 print(hashTable)
 
+class HashTable:
+
+    def __init__(self,size):
+        self.size = size # so we know that when the hashtable object will be created we will need to pass on a size and whereever we use it we need to use the variable name self.size
+        self.hash_table = self.create_buckets() # also a variable self.hash_table will be initialized will will hold the value of the value returned from the create_buckets function inside the class
+
+    def create_buckets(self):
+        return [[] for i in range(self.size)] # so this basically creates an empty hash table of size that we provide and the empty table is stored in the self.hash_table   
+
+    def set_val(self,key, val):# this will insert a keyvalue pair to the table
+        #Get the index from the key using hash function
+
+        hashed_key = hash(key)% self.size # it calculates the hashed key using the built-in 'hash' function and takes the the modulus of it with the size of the has table to get the index
+        # we know that modulus gives the remainder
+        bucket = self.hash_table[hashed_key] # this stores the bucket which is the small array corresponding to the index
+
+        found_key = False # initializes a variable 'found_key' to 'False'
+        for index, record in enumerate(bucket): # it iterates through the records in the bucket using the 'enumerate'function to keep track of the index and the record itself
+            record_key, record_val = record
+
+            
+            if record_key ==key: # if the key of the current record matches the key we are trying to insert, it sets found_key to True and breaks out of the loop
+                found_key = True
+                break
+
+        if found_key:# if found _key is True
+            bucket[index]=(key, val) # updates the key-value pair
+        else:
+            bucket.append((key,val)) # otherwise adds new that is appends
+
+
+    def get_val(self,key):
+        hashed_key = hash(key)%self.size
+
+        bucket = self.hash_table[hashed_key]
+
+        found_key = False
+        for index, record in enumerate(bucket):
+            record_key, record_val = record
+
+
+            if record_key == key:
+                found_key = True
+                break
+
+        if found_key:
+            return record_val
+        else:
+            return "No record found"
+        
+
+    def delete_val(self,key):
+        hashed_key = hash(key)%self.size
+        bucket = self.hash_table[hashed_key]
+
+        found_key= False
+        for index, record in enumerate(bucket):
+            record_key, record_val = record
+
+            if record_key == key:
+                found_key = True
+                break
+        if found_key:
+            bucket.pop(index)
+        return
+    
+
+    def __str__(self):# this method provides a string representation of the hash table
+        return "".join(str(item) for item in self.hash_table) # it concatenates the string representations of all the items in the hash table and returns the result
+            
+hash_table = HashTable(50)
+
+hash_table.set_val("amans@gmail.com", "some value")
+print(hash_table)
+print()
+
+hash_table.set_val('piyush@gmail.com', 'some other value')
+print(hash_table)
+print()
+
+print(hash_table.get_val('piyush@gmail.com'))
+print()
+
+hash_table.delete_val('piyush@gmail.com')
+print(hash_table)
+
+
