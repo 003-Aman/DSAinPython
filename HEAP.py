@@ -77,6 +77,7 @@ insert(arr, 2)
 print ("Max-Heap array: " + str(arr))
 
 deleteNode(arr, 4)
-print("After deleting an element: " + str(arr))   
+print("After deleting an element: " + str(arr))
+   
 
 
