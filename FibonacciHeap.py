@@ -25,41 +25,41 @@ import math
 class FibonacciTree:
     def __init__(self, value):
         self.value = value
-        self.child = []
-        self.order = 0
+        self.child = []#initializes an empty array which stores the child nodes
+        self.order = 0 #this represents the no. of children of children at first
 
     # Adding tree at the end of the tree
     def add_at_end(self, t):
-        self.child.append(t)
-        self.order = self.order + 1
+        self.child.append(t)#this appends the value of t that we give in the empty array of the child
+        self.order = self.order + 1 #which means no.of children pani increase bhayo
 
 
 # Creating Fibonacci heap
-class FibonacciHeap:
+class FibonacciHeap:# this is the bigger picture of the tree
     def __init__(self):
-        self.trees = []
-        self.least = None
-        self.count = 0
+        self.trees = [] #now this is the heap which stores the inital number of trees of it
+        self.least = None # this is a pointer initially points to none but late will point to the minimum element in the heap
+        self.count = 0 # represents the no.of nodes in the heap
 
     # Insert a node
     def insert_node(self, value):
-        new_tree = FibonacciTree(value)
-        self.trees.append(new_tree)
+        new_tree = FibonacciTree(value) # inserting a node means initializing a new tree
+        self.trees.append(new_tree) # a new tree is created in the above line and added to the empty array of the the self.trees which holds the no. of trees in the heap
         if (self.least is None or value < self.least.value):
-            self.least = new_tree
-        self.count = self.count + 1
+            self.least = new_tree # self.least points to the object new node, here if it is the first one to go in obviously it will be the minimum
+        self.count = self.count + 1 # count holds the number of trees in the heap, order holds the no.of children these trees have
 
     # Get minimum value
     def get_min(self):
-        if self.least is None:
+        if self.least is None:#which means if there are no trees in the heap
             return None
-        return self.least.value
+        return self.least.value # return the value of which the self.least is pointing right now
 
     # Extract the minimum value
     def extract_min(self):
-        smallest = self.least
-        if smallest is not None:
-            for child in smallest.child:
+        smallest = self.least #this line stored the current minumum node of the heap in the variable "smallest"
+        if smallest is not None: #checks if heap is no empty
+            for child in smallest.child: # iterates over each child in the smallest node kinabhane self.least was pointing to the minumum node aba tei bata iterate gardai janxa
                 self.trees.append(child)
             self.trees.remove(smallest)
             if self.trees == []:
