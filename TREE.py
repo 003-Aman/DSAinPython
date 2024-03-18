@@ -51,13 +51,13 @@ def inorder(root): #l,n,r
         inorder(root.left)#traverse left
         print(str(root.val) + "->", end="")
         inorder(root.right)        
-def postorder(root):
+def postorder(root):#l,r,n
     if root:
         postorder(root.left)
         postorder(root.right)
         print(str(root.val)+ "->", end ="")   
 
-def preorder(root):
+def preorder(root):#n,l,r
     if root:
         print(str(root.val)+ "->", end ="") 
         postorder(root.left)
