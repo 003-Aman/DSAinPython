@@ -32,7 +32,7 @@ class DoublyLL:
 
         else:
             a =self.head
-            while a.next is not None:#traverses to the last and makes the last node head
+            while a.next is not None:#traverses to the last like usual
                 a=a.next
             while a is not None:
                 print(a.data,end=" ")#now from the last we backward traverse
@@ -40,19 +40,21 @@ class DoublyLL:
 
 
     def insert_at_beginning(self,data):
-        ns = Node(data)
-        a = self.head
-        a.prev =ns
-        ns.next = a
-        self.head = ns
+        ns = Node(data)#insert haru ma hami paila node banaihalxam
+        a = self.head #self.head variable is stored in a, which means threr are two self.head now
+        a.prev =ns #a.prev vanest first node to paxadi is connected to the new node just created since it is self.head
+        ns.next = a #and the ns.next is self.head
+        self.head = ns #now we update the value of the self.head and point it to the infront most
 
     def insert_at_end(self,data):
         ne = Node(data)
         a= self.head
         while a.next is not None:
             a = a.next
-        a.next = ne
-        ne.prev = a
+        a.next = ne #traversed to last and added the last node there
+        ne.prev = a #and the .prev of the node that we just created and added will be pointing to the a node
+        #the big question is, is it pointing to the a node or the a.next
+        
 
     def insert_at_specified_node(self,data,position):
         nib = Node(data)
