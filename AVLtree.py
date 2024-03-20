@@ -43,15 +43,15 @@ class AVLTree(object):
         if not root:
             return TreeNode(key)
         elif key < root.key:
-            root.left = self.insert_node(root.left, key)
+            root.left = self.insert_node(root.left, key)#lesser is always on the left
         else:
-            root.right = self.insert_node(root.right, key)
+            root.right = self.insert_node(root.right, key)# greater value on the tree is always on the right
 
         root.height = 1 + max(self.getHeight(root.left),
                               self.getHeight(root.right))
 
         # Update the balance factor and balance the tree
-        balanceFactor = self.getBalance(root)
+        balanceFactor = self.getBalance(root)# all the the functions are defined below
         if balanceFactor > 1:
             if key < root.left.key:
                 return self.rightRotate(root)
