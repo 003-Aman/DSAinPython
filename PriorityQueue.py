@@ -1,8 +1,7 @@
 '''
 Priority Queue Applications
 
-
-
+sorting algorithms,graph algos,system-related algos
 Dijkstra's algorithm
 for implementing stack
 for load balancing and interrupt handling in an operating system
@@ -77,9 +76,9 @@ Extract-Max returns the node with maximum value after removing it from a Max Hea
 
 #Actual Implementation with code
 #max-heap data structure in Python
-def heapify(arr,n,i): #heap in the form of an array, size of array/heap,index of the parent/current node
+def heapify(arr,n,i): #heap in the form of an array, size of array/heap,index of the current node
     largest =i# setting index of the largest node i.e the parent node to i
-    l = 2*i+1 # the leftChild will have index this l
+    l = 2*i+1 # the leftChild will have index this l, check it
     r = 2*i+2 # the rightChild will have index this r
 
     if l<n and arr[i] < arr[l]: #if left child exists(l<n) and its value is greater than the parent, 
@@ -98,7 +97,7 @@ def insert(array, newNum):
         array.append(newNum)# just append it to the array
     else:
         array.append(newNum) #otherwise, append the new number to the array and then loop through the array 
-        for i in range((size//2)-1, -1, -1): #starting from the parent of the last element(size//2)and going up to the root
+        for i in range((size//2)-1, -1, -1): #starting from the parent of the last element(size//2), check it and going up to the root
             heapify(array, size, i)#for each iteration ,call heapify on the current parent node  
 
 def deleteNode(array, num):
