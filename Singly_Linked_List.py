@@ -4,7 +4,7 @@ each node contains data and reference(pointer) which contains the address of nex
 eg.Head-->['Aman',2020]->['Piyush',2030]->['Pramod',  ]-->Null
              N1=2010         N2=2020         N3=2030
 N1,N2 and N3 are addresses of the nodes and they have data and reference
-reference is basically the address of the next node
+reference is basically the address of the NEXT node
              
 '''
 #accessing the elements will be slower compared to list because linked list needs a traversal
@@ -25,7 +25,7 @@ print(n1.next)
 #creating a class of Singly Linked list
 class SinglyLL:
     def __init__(self):#whenever you create an object whatever is inside the init constructor will execute
-        self.head = None
+        self.head = None #so there is a head but it points to nothing at first
 
 #TRAVERSAL IN LINKED LIST
     def traversal(self): 
@@ -62,7 +62,7 @@ class SinglyLL:
         print()
         nib = Node(data)
         a=self.head
-        for i in range(1,position-1):#specified index ko agadi samma iterate
+        for i in range(1,position-1):#specified index ko agadi samma iterate,agadi samma ni haina yo ta duita agadi samma iterate ho kinabhane position ta include hudaihudaina ni
             a=a.next
         nib.next = a.next #point to the same node both
         a.next =nib #pull out the previous node and point to the new
@@ -79,19 +79,20 @@ class SinglyLL:
     def deletion_at_end(self): #you have to go through each node through each node you cant directly jump to the last one in linkedlist
         print()
         prev =self.head #initial node lai elle point garaideko yo bela prev le
+        #this is not the .prev attribute but we are creating it as a variable to make it easier
         a=self.head.next # ani aile a lai chai agadi ko lai second node
         while a.next is not None: #so basically self.head.next.next
             #this is checking 1 kadam agadi khali xaina vane
             a=a.next #agadi bada
             prev = prev.next #yo pani agadi badhdai xa tara a vanda 1 kadam paxadi xa
         prev.next = None #the while loop ends then list is over and a.next is None
-        #so come out of the while loop and dont go forward disconnect   
+        #so come out of the while loop and dont go forward disconnect, the agadi wala has to do nothing-
 
     def deletion_at_specified_node(self,position):
         print()
-        prev=self.head
+        prev=self.head #two variables created and traversed
         a=self.head.next
-        for i in range(1,position): #this time a doesnt stop before it reaches the position but reaches there
+        for i in range(1,position): #this time a doesnt stop before it reaches the position but reaches there, position ta is actually not included , but i think this is not the index so
             a=a.next
             prev =prev.next
         
