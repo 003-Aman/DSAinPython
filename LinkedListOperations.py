@@ -18,8 +18,8 @@ class LinkedList:
             self.head = new_node
             return 
         else:
-            new_node.next = self.head
-            self.head = new_node #updating the head value paxadi link todera agadi ayera joddiyo
+            new_node.next = self.head #paila jodni ani balla todni, paila next to value self.head gardeko which means right now self.head is in two places
+            self.head = new_node #updating the head value paxadi link todera agadi ayera joddiyo, now the value is updated and it points to the node just added
 
 
 
@@ -29,7 +29,7 @@ class LinkedList:
             self.head = new_node # if it is, point the head to the new node which we have created
             return 
 
-        current_node = self.head #yo else ho, make a variable current_node and make it the self.head
+        current_node = self.head #yo else ho, make a variable current_node and make it the self.head, so that the self.head stays where it is but we can traverse
         while current_node.next: #self.head.next
             current_node =current_node.next # agadi ko ma point gara
         current_node.next = new_node   #agadi aba new node jodde 
@@ -43,7 +43,7 @@ class LinkedList:
             self.insertAtBegin(data)
         else:
             while current_node!=None and position+1 !=index: #traverses the linked list until either current_node becomes None(indicating the end of the list) or position +1 equals to the specified index,
-                # which means we are inserting the node at the specified value tyo bhand agadi nai we are ending the traversal becuase position +1 != index vanexa
+                # which means we are inserting the node at the specified value tyo bhanda agadi nai we are ending the traversal becuase position +1 != index vanexa
                 position = position +1 #with each iteration, it increments the position and moves current_node to the next node
                 current_node = current_node.next
 
@@ -74,17 +74,17 @@ class LinkedList:
     def remove_first_node(self):
         if self.head == None:#which means no node
             return 
-        self.head = self.head.next # passing the head pointer to the one infront
+        self.head = self.head.next # passing the head pointer to the one infront, so basically we dont see a removal nai here but when we print we just print from the new self.head and it looks removed
 
     def remove_last_node(self):
         if self.head is None:
             return 
         current_node = self.head #else
 
-        while current_node.next.next:
+        while current_node.next.next: #when we write currentnode.next.next means the last node should also have a next, which doesnt but the second last does so it stops in the second last and then we detach the last node
             current_node=current_node.next 
 
-        current_node.next =None
+        current_node.next =None #detach
 
     def remove_at_index(self,index):
         if self.head == None:
@@ -92,21 +92,22 @@ class LinkedList:
 
         current_node =self.head
         position =0
-        if position ==index:
+        if position ==index:#this simply means that the node we are trying to remove is in the first index 0, we just call the remove at first index
             self.remove_first_node()
 
         else:
-            while current_node != None and position +1 != index:
+            while current_node != None and position +1 != index:#this stops right before the specified index
                 position = position +1
                 current_node= current_node.next
 
             if current_node != None:
                 current_node.next = current_node.next.next
+                current_node.next.next = None# i dont know if this is required or not but a detach should be done
 
             else:
                 print("Index not present")   
 
-    def remove_node(self,data):
+    def remove_node(self,data):#this function removes an element based on the value provided not index
         current_node = self.head
 
         if current_node.data ==data:
@@ -120,6 +121,7 @@ class LinkedList:
             return
         else:
             current_node.next = current_node.next.next
+            current_node.next.next = None
 
     def sizeOfLL(self):
         size =0
@@ -127,7 +129,7 @@ class LinkedList:
             current_node = self.head
             while(current_node):
                 size = size +1
-                current_node = current_node.next
+                current_node = current_node.next #as long as size this doesnt reach the last where current_node.next doesnt exist keep on incresing the size
 
             return size
 
@@ -137,8 +139,8 @@ class LinkedList:
     def printLL(self):
         current_node =self.head
         while current_node:
-            print(current_node.data)
-            current_node=current_node.next
+            print(current_node.data) #print and pass
+            current_node=current_node.next #goto the next and print again, its a while loop
 
 
 llist = LinkedList()
