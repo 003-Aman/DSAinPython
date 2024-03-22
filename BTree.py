@@ -3,8 +3,15 @@
 #a b tree is a self-balancing search tree in which each node can contain more than one key/data like 1/2/Aman or anything
 #each node can have more data and more children, so this is the shit
 
-#It is also known as a height-balanced m-way tree
+#It is also known as a height-balanced m-way tree, m means order of the tree
 
+#can have more than one key and more than 2 children
+#maintains sorted data
+#all the leaf nodes must be at the same level
+# b-tree of order m has the following properties
+#every node has maximum m children
+
+#WATCH JENNY'S LECTURE 5.24, 5,25 very well explained
 '''
 Why do you need a B-tree data structure?
 
@@ -13,11 +20,29 @@ The need for B-tree arose with the rise in the need for lesser time in accessing
 Other data structures such as a binary search tree, avl tree, red-black tree, etc can store only one key in one node. If you have to store a large number of keys, then the height of such trees becomes very large, and the access time increases.
 
 However, B-tree can store many keys in a single node and can have multiple child nodes. This decreases the height significantly allowing faster disk accesses.
+ 
+used by database systems, large volume of data
+'''
+'''
+evry node has max m children
+min children: leaf -> 0
+              root -> 2
+              internal nodes -> m/2
+
+every node has maximum (m-1) keys
+min keys : root node -> 1
+           all other nodes->(m/2)-1
+'''
+
+'''
+Create a b-tree of order 3 by inserting values from 1to10
+
+m=3
+max key =(m-1) =3-1 = 2
+
 
 '''
 # Searching a key on a B-tree in Python
-
-
 # Create a node
 class BTreeNode:
   def __init__(self, leaf=False):
