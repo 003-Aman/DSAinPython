@@ -50,7 +50,30 @@ public class QLinearSearch {
         return ans;
     }
     //Q4.SEARCH IN 2D ARRAY
-    static int search2D(int[][] arr,int target){}
+    static int search2D(int[][] arr,int target){
+        for (int row = 0; row < arr.length; row++) {
+            for (int col = 0; col < arr[row].length; col++) {
+                if (arr[row][col] == target) {
+                    return new int[]{row, col};
+                }
+            }
+        }
+        return new int[]{-1, -1};
+    }
+
+    static int max(int[][] arr) {
+        int max = Integer.MIN_VALUE;
+        for (int[] ints : arr) {
+            for (int element : ints) {
+                if (element > max) {
+                    max = element;
+                }
+            }
+        }
+        return max;
+    }
+    }
 
     
-}
+//Q5.EVEN DIGITS #1295
+//Q6.MAX WEALTH #1672(both are leetcode questions)
